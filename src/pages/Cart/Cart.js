@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
-import { emptyCart } from "../../assets/images/index";
+import { empty} from "../../assets/images/index";
 import ItemCard from "./ItemCard";
 
 const Cart = () => {
@@ -22,11 +22,11 @@ const Cart = () => {
   }, [products]);
   useEffect(() => {
     if (totalAmt <= 200) {
-      setShippingCharge(30);
+      setShippingCharge(8);
     } else if (totalAmt <= 400) {
-      setShippingCharge(25);
+      setShippingCharge(5);
     } else if (totalAmt > 401) {
-      setShippingCharge(20);
+      setShippingCharge(0);
     }
   }, [totalAmt]);
   return (
@@ -75,25 +75,25 @@ const Cart = () => {
                 <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                   Subtotal
                   <span className="font-semibold tracking-wide font-titleFont">
-                    ${totalAmt}
+                    DT {totalAmt}
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
-                  Shipping Charge
+                  Delivery charge
                   <span className="font-semibold tracking-wide font-titleFont">
-                    ${shippingCharge}
+                    DT {shippingCharge}
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
                   Total
                   <span className="font-bold tracking-wide text-lg font-titleFont">
-                    ${totalAmt + shippingCharge}
+                    DT {totalAmt + shippingCharge}
                   </span>
                 </p>
               </div>
               <div className="flex justify-end">
                 <Link to="/paymentgateway">
-                  <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
+                  <button className="group mt-4 md:mt-5 flex items-center gap-2 md:gap-3 border-2 border-[#884B2C] px-4 md:px-20 py-2  text-[#884B2C] bg-transparent hover:bg-[#884B2C] hover:text-white transition whitespace-nowrap">
                     Proceed to Checkout
                   </button>
                 </Link>
@@ -111,8 +111,8 @@ const Cart = () => {
           <div>
             <img
               className="w-80 rounded-lg p-4 mx-auto"
-              src={emptyCart}
-              alt="emptyCart"
+              src={empty}
+              alt="empty"
             />
           </div>
           <div className="max-w-[500px] p-4 py-8 bg-white flex gap-4 flex-col items-center rounded-md shadow-lg">
@@ -120,11 +120,10 @@ const Cart = () => {
               Your Cart feels lonely.
             </h1>
             <p className="text-sm text-center px-10 -mt-2">
-              Your Shopping cart lives to serve. Give it purpose - fill it with
-              books, electronics, videos, etc. and make it happy.
+              Your Shopping cart lives to serve. Give it purpose - fill it and make it happy.
             </p>
             <Link to="/shop">
-              <button className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
+              <button className="group mt-4 md:mt-5 flex items-center gap-2 md:gap-3 border-2 border-[#884B2C] px-4 md:px-20 py-2  text-[#884B2C] bg-transparent hover:bg-[#884B2C] hover:text-white transition whitespace-nowrap">
                 Continue Shopping
               </button>
             </Link>

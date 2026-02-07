@@ -23,6 +23,13 @@ import banner1 from "./banner/banner1.png";
 import saleImgOne from "./sale/saleImgOne.jpg";
 import saleImgTwo from "./sale/saleImgTwo.jpg";
 import saleImgThree from "./sale/saleImgThree.jpg";
+import empty from "./empty.png";
+import send from "./send.png";
+
+import contact from "./contact.png";
+import ourstory from "./ourstory.png";
+
+
 // ============== Products Start here ====================
 // New Arrivals
 import newArrOne from "./products/newArrival/newArrOne.jpg";
@@ -66,6 +73,10 @@ export {
   saleImgOne,
   saleImgTwo,
   saleImgThree,
+  empty,
+  contact,
+  ourstory,
+  send,
   // ===================== Products start here ============
   // New Arrivals
   newArrOne,

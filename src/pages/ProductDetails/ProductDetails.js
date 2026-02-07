@@ -2,38 +2,80 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import ProductInfo from "../../components/pageProps/productDetails/ProductInfo";
-import ProductsOnSale from "../../components/pageProps/productDetails/ProductsOnSale";
 
 const ProductDetails = () => {
   const location = useLocation();
-  const [prevLocation, setPrevLocation] = useState("");
-  const [productInfo, setProductInfo] = useState([]);
+  const [prevLocation, setPrevLocation] = useState("/");
+  const [productInfo, setProductInfo] = useState({});
+  const [activeImage, setActiveImage] = useState("");
 
   useEffect(() => {
-    setProductInfo(location.state.item);
+    if (location.state?.item) {
+      setProductInfo(location.state.item);
+      if (Array.isArray(location.state.item.images)) {
+        setActiveImage(location.state.item.images[0]);
+      } else {
+        setActiveImage(location.state.item.img);
+      }
+    }
     setPrevLocation(location.pathname);
-  }, [location, productInfo]);
+  }, [location]);
+
+  const images = productInfo.images || [productInfo.img];
 
   return (
-    <div className="w-full mx-auto border-b-[1px] border-b-gray-300">
+    <div className="w-full mx-auto border-b border-gray-300">
       <div className="max-w-container mx-auto px-4">
+
+        {/* BREADCRUMB */}
         <div className="xl:-mt-10 -mt-7">
-          <Breadcrumbs title="" prevLocation={prevLocation} />
+          <Breadcrumbs title={productInfo.name} prevLocation={prevLocation} />
         </div>
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-4 h-full -mt-5 xl:-mt-8 pb-10 bg-gray-100 p-4">
-          <div className="h-full">
-            <ProductsOnSale />
+
+        {/* PRODUCT CARD */}
+        <div
+          className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 p-8 pb-12 rounded-lg
+                     bg-white border-2"
+          style={{ borderColor: "#884B2C" }}
+        >
+
+          {/* IMAGE GALLERY */}
+          <div>
+            <div className="w-full h-[420px] border rounded-md overflow-hidden">
+              <img
+                src={activeImage}
+                alt={productInfo.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="flex gap-4 mt-4">
+              {images.map((img, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveImage(img)}
+                  className={`w-24 h-24 border rounded-md overflow-hidden
+                    ${
+                      activeImage === img
+                        ? "border-[#884B2C]"
+                        : "border-gray-300 hover:border-[#884B2C]"
+                    }`}
+                >
+                  <img
+                    src={img}
+                    alt={`${productInfo.name} ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="h-full xl:col-span-2">
-            <img
-              className="w-full h-full object-cover"
-              src={productInfo.img}
-              alt={productInfo.img}
-            />
-          </div>
-          <div className="h-full w-full md:col-span-2 xl:col-span-3 xl:p-14 flex flex-col gap-6 justify-center">
+
+          {/* PRODUCT INFO */}
+          <div className="flex flex-col justify-center gap-6">
             <ProductInfo productInfo={productInfo} />
           </div>
+
         </div>
       </div>
     </div>
