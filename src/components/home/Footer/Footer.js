@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "../../designLayouts/Image";
+import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import {
   logo,
   instagram,   
@@ -17,7 +18,6 @@ const Footer = () => {
           imgSrc={bg}
           className="w-full h-full object-cover"
         />
-        
       </div>
 
       {/* CONTENT */}
@@ -36,16 +36,26 @@ const Footer = () => {
             />
           </div>
 
-          {/* COPYRIGHT */}
-          <p
-            className="text-xl text-center"
+          {/* CONTACT INFO */}
+          <div
+            className="text-center"
             style={{
               fontFamily: "'Syne', sans-serif",
               color: "#884B2C",
             }}
           >
-            © 2025 RomaTerra.tn All rights reserved
-          </p>
+            <p className="text-lg font-semibold">Contact</p>
+
+  <p className="text-sm flex items-center justify-center gap-2">
+    <FaPhoneAlt className="text-[#884B2C]" />
+    +216 95 715 400
+  </p>
+
+  <p className="text-sm flex items-center justify-center gap-2">
+    <FaMapMarkerAlt className="text-[#884B2C]" />
+    Moknine, Tunisia
+  </p>
+</div>
 
           {/* SOCIAL ICONS */}
           <div className="flex items-center gap-6">
@@ -75,12 +85,21 @@ const Footer = () => {
           </div>
 
         </div>
+
+        {/* COPYRIGHT */}
+        <p
+          className="text-xl text-center mt-6"
+          style={{
+            fontFamily: "'Syne', sans-serif",
+            color: "#884B2C",
+          }}
+        >
+          © 2025 RomaTerra.tn All rights reserved
+        </p>
+
       </div>
     </footer>
   );
 };
 
 export default Footer;
-
-
-
