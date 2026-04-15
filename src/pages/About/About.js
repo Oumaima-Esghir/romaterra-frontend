@@ -12,45 +12,49 @@ const About = () => {
   }, [location]);
 
   return (
-    <div className="w-full h-screen relative">
-      <Breadcrumbs title="About" prevLocation={prevLocation} />
+    <div className="w-full relative bg-[#FBF7ED]">
+      
+      {/* BREADCRUMBS */}
+      <div className="px-4 md:px-16 py-1">
+        <Breadcrumbs 
+          title="About" 
+          prevLocation={prevLocation} 
+          className="text-[#884B2C] text-xs"
+        />
+      </div>
 
-      {/* FULL SCREEN BACKGROUND IMAGE */}
+      {/* BACKGROUND SECTION */}
       <div
-        className="w-full h-full flex flex-col items-absolute justify-absolute text-absolute"
+        className="w-full h-[85vh] md:min-h-screen flex bg-no-repeat bg-center bg-cover items-start md:items-center"
         style={{
           backgroundImage: `url(${ourStoryImg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "absolute",
-          backgroundSize: "cover",
         }}
       >
-        {/* TITLE */}
-        <div className="flex justify-center mb-10">
-          <svg viewBox="0 0 1400 1000" className="w-full max-w-6xl">
-            <text
-              x="50%"
-              y="60%"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill="white"
-              stroke="#884B2C"
-              strokeWidth="12"
-              paintOrder="stroke fill"
-              style={{ fontFamily: "'Style Script', cursive", fontSize: "160px" }}
-            >
-              Our Story
-            </text>
-          </svg>
-        </div>
 
-        {/* DESCRIPTION TEXT */}
-        <p className="text-black text-lg sm:text-xl leading-relaxed max-w-3xl px-6">
-          At Roma Terra, we craft timeless ceramics inspired 
-          by the elegance of ancient Rome. We believe that every 
-          object should tell a story of earth, history, and bringing 
-          a fragment of Rome into your home.
-        </p>
+        {/* LEFT CONTENT */}
+        <div className="px-4 md:px-16 max-w-sm mt-32 md:mt-0">
+
+          {/* TITLE (lower on mobile) */}
+          <h1
+            className="mb-2"
+            style={{
+              fontFamily: "'Style Script', cursive",
+              fontSize: "32px",
+              color: "#884B2C",
+            }}
+          >
+            Our Story
+          </h1>
+
+          {/* TEXT (short lines on mobile) */}
+          <p className="text-black text-xs leading-relaxed max-w-[120px] md:max-w-sm">
+            At Artifacts Ceramics, where clay becomes story.
+            Inspired by nature, tradition, we shape timeless pieces by hand.
+            Each creation carries its own identity, celebrating imperfection, authenticity, and the beauty of slow creation, 
+            while bringing warmth and character into modern living spaces.
+          </p>
+
+        </div>
       </div>
     </div>
   );
