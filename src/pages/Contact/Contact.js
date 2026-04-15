@@ -22,118 +22,91 @@ const Contact = () => {
   };
 
   return (
-    <div className="max-w-container mx-auto px-4 pb-20">
-      <Breadcrumbs title="Contact" prevLocation={prevLocation} />
+    <div className="w-full relative bg-[#FBF7ED]">
 
-      {/* IMAGE + CONTENT CONTAINER */}
+      {/* BREADCRUMBS */}
+      <div className="px-4 md:px-16 py-1">
+        <Breadcrumbs 
+          title="Contact" 
+          prevLocation={prevLocation} 
+          className="text-[#884B2C] text-xs"
+        />
+      </div>
+
+      {/* BACKGROUND SECTION */}
       <div
-        className="
-          relative w-full overflow-hidden
-          rounded-[40px] sm:rounded-[60px] lg:rounded-[80px]
-          min-h-[520px] sm:min-h-[620px] lg:min-h-[80vh]
-        "
+        className="w-full h-[85vh] md:min-h-screen flex items-start md:items-center bg-no-repeat bg-center bg-[length:103%] md:bg-cover"
         style={{
           backgroundImage: `url(${contact})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "right center",
-          backgroundSize: "cover",
         }}
       >
-        {/* CONTENT */}
-        <div
-          className="
-            relative z-10
-            px-6 sm:px-10 lg:px-16
-            py-10 sm:py-14 lg:py-20
-            max-w-xl
-          "
-        >
-          {/* TITLE */}
-          <div className="mb-6">
-            <svg viewBox="0 0 1400 300" className="w-full">
-              <text
-                x="0"
-                y="60%"
-                textAnchor="start"
-                dominantBaseline="middle"
-                fill="white"
-                stroke="#884B2C"
-                strokeWidth="18"
-                paintOrder="stroke fill"
-                style={{
-                  fontFamily: "'Style Script', cursive",
-                  fontSize: "140px",
-                }}
-              >
-                Contact Us !
-              </text>
-            </svg>
-          </div>
 
-          {/* DESCRIPTION */}
-          <p className="text-black text-sm sm:text-base mb-8 leading-relaxed">
-            We’d love to hear from you. Whether you have a question about a
-            product, an order or anything else, our team will get back to you
-            shortly.
+        {/* LEFT CONTENT */}
+        <div className="px-4 md:px-16 max-w-sm mt-24 md:mt-0">
+
+          {/* TITLE */}
+          <h1
+            className="mb-2"
+            style={{
+              fontFamily: "'Style Script', cursive",
+              fontSize: "32px",
+              color: "#884B2C",
+            }}
+          >
+            Contact Us
+          </h1>
+
+          {/* TEXT */}
+          <p className="text-black text-xs leading-relaxed max-w-[220px]">
+            We’d love to hear from you. Whether you have a question
+            about a product, an order, or anything else, our team will
+            get back to you shortly.
           </p>
 
           {/* FORM */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            {/* NAME + LAST NAME */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm mb-1 text-black">Name</label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className=" w-full px-4 py-3 pr-16 rounded-md bg-white/80 border border-[#884B2C] outline-none resize-none "
-                />
-              </div>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-6">
 
-              <div>
-                <label className="block text-sm mb-1 text-black">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your last name"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  className= " w-full px-4 py-3 pr-16 rounded-md bg-white/80 border border-[#884B2C] outline-none resize-none "
-                />
-              </div>
-            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
-            {/* MESSAGE */}
-            <div className="relative">
-              <label className="block text-sm mb-1 text-black">Message</label>
-              <textarea
-                rows="4"
-                placeholder="Your message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className=" w-full px-4 py-3 pr-16 rounded-md bg-white/80 border border-[#884B2C] outline-none resize-none "
+              <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="px-3 py-2 text-xs rounded-md bg-white/80 border border-[#884B2C] outline-none"
               />
 
-              {/* SEND BUTTON */}
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="px-3 py-2 text-xs rounded-md bg-white/80 border border-[#884B2C] outline-none"
+              />
+
+            </div>
+
+            <div className="relative">
+
+              <textarea
+                rows="3"
+                placeholder="Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full px-3 py-2 pr-12 text-xs rounded-md bg-white/80 border border-[#884B2C] outline-none resize-none"
+              />
+
               <button
                 type="submit"
-                className="
-                  absolute bottom-3 right-3
-                  w-11 h-11
-                  bg-[#884B2C]
-                  rounded-md
-                  flex items-center justify-center
-                  hover:bg-[#A2664E]
-                  transition
-                "
+                className="absolute bottom-2 right-2 w-9 h-9 bg-[#884B2C] rounded-md flex items-center justify-center hover:bg-[#A2664E] transition"
               >
-                <img src={send} alt="Send" className="w-5 h-5" />
+                <img src={send} alt="Send" className="w-4 h-4" />
               </button>
+
             </div>
+
           </form>
+
         </div>
       </div>
     </div>
