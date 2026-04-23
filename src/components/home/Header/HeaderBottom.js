@@ -126,7 +126,7 @@ const HeaderBottom = () => {
                       />
                       <div>
                         <p className="font-semibold">{item.productName}</p>
-                        <p className="text-sm text-gray-500">${item.price}</p>
+                        <p className="text-sm text-gray-500">DT {item.price}</p>
                       </div>
                     </button>
                   ))}
