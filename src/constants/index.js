@@ -28,7 +28,7 @@ export const navBarList = [
   {
     _id: 1003,
     title: "Contact US",
-    link: "contact",
+    link: "/contact",
   },
  
   {

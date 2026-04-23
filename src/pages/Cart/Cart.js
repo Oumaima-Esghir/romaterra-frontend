@@ -25,7 +25,7 @@ const Cart = () => {
       setShippingCharge(8);
     } else if (totalAmt <= 400) {
       setShippingCharge(5);
-    } else if (totalAmt > 401) {
+    } else if (totalAmt > 400) {
       setShippingCharge(0);
     }
   }, [totalAmt]);

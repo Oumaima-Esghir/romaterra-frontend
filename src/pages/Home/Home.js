@@ -12,14 +12,14 @@ const Home = () => {
       style={{ backgroundImage: `url(${bg})` }}
     >
       {/* You can also add a semi-transparent overlay if you want */}
-      
-        <Banner />
-        <div className="max-w-container mx-auto px-4">
-          <Sale />
-          <NewArrivals />
-          <SpecialOffers />
-        </div>
-     
+
+      <Banner />
+      <div >
+        <Sale />
+        <NewArrivals />
+        <SpecialOffers />
+      </div>
+
     </div>
   );
 };

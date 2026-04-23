@@ -14,7 +14,7 @@ import {
 } from "../../../assets/images";
 import { addToCart } from "../../../redux/orebiSlice";
 
-const products = [
+export const newArrivalProducts = [
   { img: newArrOne, name: "Mini Statue Ceres", price: "544" },
   { img: newArrTwo, name: "Vasea Arcadia", price: "250" },
   { img: newArrThree, name: "Decor Pietra", price: "80" },
@@ -56,11 +56,11 @@ const NewArrivals = () => {
 
   return (
     <section
-      className="relative w-screen py-32 overflow-hidden bg-cover bg-center"
+      className="relative py-32 overflow-hidden bg-cover bg-center"
       //style={{ backgroundImage: `url(${bg})` }}
     >
       {/* ===== TITLE ===== */}
-      <div className="flex justify-center mb-20 relative z-10">
+      <div className="flex justify-center mb-20 ">
         <svg viewBox="0 0 1400 300" className="w-full max-w-6xl">
           <text
             x="50%"
@@ -98,7 +98,7 @@ const NewArrivals = () => {
           </div>
 
           <Slider {...settings} ref={sliderRef}>
-            {products.map((item, index) => (
+            {newArrivalProducts.map((item, index) => (
               <div key={index} className="px-4">
                 <div
                   className="p-6 flex flex-col items-center text-center bg-cover bg-center rounded-[2.5rem] cursor-pointer group"

@@ -18,7 +18,7 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const products = [
+export const specialOfferProducts = [
   { _id: "201", img: spfOne, name: "Cap for Boys", price: "35", state: "out" },
   { _id: "202", img: spfTwo, name: "Tea Table", price: "180", state: "in" },
   { _id: "203", img: spfThree, name: "Headphones", price: "25", state: "in" },
@@ -85,7 +85,7 @@ const SpecialOffers = () => {
         <div className="max-w-[1200px] mx-auto px-8 pt-16">
           {/* ===== SLIDER ===== */}
           <Slider ref={sliderRef} {...settings}>
-            {products.map((item, index) => (
+            {specialOfferProducts.map((item, index) => (
               <div key={index} className="p-4 text-center">
                 {/* IMAGE */}
                 <div

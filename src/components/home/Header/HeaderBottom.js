@@ -47,7 +47,8 @@ const HeaderBottom = () => {
         <Flex className="flex flex-col gap-3 lg:flex-row lg:items-center justify-between w-full px-4 pb-4 lg:pb-0 h-full lg:h-24">
 
           {/* CATEGORY MENU */}
-          <div
+          <button
+            type="button"
             ref={ref}
             onClick={() => setShow(!show)}
             className="flex h-14 cursor-pointer items-center gap-2 text-[#884B2C]"
@@ -79,7 +80,7 @@ const HeaderBottom = () => {
                 ))}
               </motion.ul>
             )}
-          </div>
+          </button>
 
           {/* SEARCH + CART (SAME LINE ON MOBILE) */}
           <div className="flex w-full lg:w-auto items-center gap-3">
@@ -103,7 +104,8 @@ const HeaderBottom = () => {
               {searchQuery && (
                 <div className="absolute top-14 left-0 w-full max-h-96 bg-white z-50 overflow-y-scroll shadow-xl">
                   {filteredProducts.map((item) => (
-                    <div
+                    <button
+                      type="button"
                       key={item._id}
                       onClick={() => {
                         navigate(
@@ -115,14 +117,18 @@ const HeaderBottom = () => {
                         );
                         setSearchQuery("");
                       }}
-                      className="flex items-center gap-3 p-3 hover:bg-gray-100 cursor-pointer"
+                      className="flex w-full items-center gap-3 p-3 hover:bg-gray-100 cursor-pointer text-left"
                     >
-                      <img src={item.img} alt="" className="w-16" />
+                      <img
+                        src={item.img}
+                        alt={item.productName}
+                        className="w-16"
+                      />
                       <div>
                         <p className="font-semibold">{item.productName}</p>
-                        <p className="text-sm text-gray-500">${item.price}</p>
+                        <p className="text-sm text-gray-500">DT {item.price}</p>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
               )}
