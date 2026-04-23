@@ -14,7 +14,7 @@ import {
 } from "../../../assets/images";
 import { addToCart } from "../../../redux/orebiSlice";
 
-const products = [
+export const newArrivalProducts = [
   { img: newArrOne, name: "Mini Statue Ceres", price: "544" },
   { img: newArrTwo, name: "Vasea Arcadia", price: "250" },
   { img: newArrThree, name: "Decor Pietra", price: "80" },
@@ -98,7 +98,7 @@ const NewArrivals = () => {
           </div>
 
           <Slider {...settings} ref={sliderRef}>
-            {products.map((item, index) => (
+            {newArrivalProducts.map((item, index) => (
               <div key={index} className="px-4">
                 <div
                   className="p-6 flex flex-col items-center text-center bg-cover bg-center rounded-[2.5rem] cursor-pointer group"

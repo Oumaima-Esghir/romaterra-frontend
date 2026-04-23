@@ -1,25 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import ProductInfo from "../../components/pageProps/productDetails/ProductInfo";
+import { paginationItems } from "../../constants";
+import { newArrivalProducts } from "../../components/home/NewArrivals/NewArrivals";
+import { specialOfferProducts } from "../../components/home/SpecialOffers/SpecialOffers";
+
+const slugifyProduct = (product) =>
+  String(product?.productName || product?.name || "")
+    .toLowerCase()
+    .split(" ")
+    .join("");
+
+const allProducts = [
+  ...paginationItems,
+  ...newArrivalProducts,
+  ...specialOfferProducts,
+];
 
 const ProductDetails = () => {
   const location = useLocation();
+  const { _id } = useParams();
   const [prevLocation, setPrevLocation] = useState("/");
   const [productInfo, setProductInfo] = useState({});
   const [activeImage, setActiveImage] = useState("");
 
   useEffect(() => {
-    if (location.state?.item) {
-      setProductInfo(location.state.item);
-      if (Array.isArray(location.state.item.images)) {
-        setActiveImage(location.state.item.images[0]);
+    const selectedProduct =
+      location.state?.item ||
+      allProducts.find((item) => slugifyProduct(item) === _id);
+
+    if (selectedProduct) {
+      setProductInfo(selectedProduct);
+      if (Array.isArray(selectedProduct.images)) {
+        setActiveImage(selectedProduct.images[0]);
       } else {
-        setActiveImage(location.state.item.img);
+        setActiveImage(selectedProduct.img);
       }
     }
     setPrevLocation(location.pathname);
-  }, [location]);
+  }, [location, _id]);
 
   const images = productInfo.images || [productInfo.img];
 
