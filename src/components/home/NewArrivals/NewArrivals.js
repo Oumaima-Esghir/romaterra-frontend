@@ -56,11 +56,11 @@ const NewArrivals = () => {
 
   return (
     <section
-      className="relative w-screen py-32 overflow-hidden bg-cover bg-center"
+      className="relative py-32 overflow-hidden bg-cover bg-center"
       //style={{ backgroundImage: `url(${bg})` }}
     >
       {/* ===== TITLE ===== */}
-      <div className="flex justify-center mb-20 relative z-10">
+      <div className="flex justify-center mb-20 ">
         <svg viewBox="0 0 1400 300" className="w-full max-w-6xl">
           <text
             x="50%"
