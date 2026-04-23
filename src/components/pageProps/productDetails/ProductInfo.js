@@ -4,12 +4,13 @@ import { addToCart } from "../../../redux/orebiSlice";
 
 const ProductInfo = ({ productInfo }) => {
   const dispatch = useDispatch();
+  const productName = productInfo.productName || productInfo.name || "";
 
   return (
     <div className="flex flex-col gap-5">
       {/* NAME */}
       <h2 className="text-4xl font-semibold text-black">
-        {productInfo.productName}
+        {productName}
       </h2>
 
       {/* PRICE */}
@@ -37,7 +38,7 @@ const ProductInfo = ({ productInfo }) => {
           dispatch(
             addToCart({
               _id: productInfo.id,
-              name: productInfo.productName,
+              name: productName,
               quantity: 1,
               image: productInfo.img,
               badge: productInfo.badge,

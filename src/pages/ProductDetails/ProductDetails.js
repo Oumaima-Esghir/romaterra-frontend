@@ -42,6 +42,7 @@ const ProductDetails = () => {
   }, [location, _id]);
 
   const images = productInfo.images || [productInfo.img];
+  const productName = productInfo.productName || productInfo.name || "";
 
   return (
     <div className="w-full mx-auto border-b border-gray-300">
@@ -49,7 +50,7 @@ const ProductDetails = () => {
 
         {/* BREADCRUMB */}
         <div className="xl:-mt-10 -mt-7">
-          <Breadcrumbs title={productInfo.name} prevLocation={prevLocation} />
+          <Breadcrumbs title={productName} prevLocation={prevLocation} />
         </div>
 
         {/* PRODUCT CARD */}
@@ -64,7 +65,7 @@ const ProductDetails = () => {
             <div className="w-full h-[420px] border rounded-md overflow-hidden">
               <img
                 src={activeImage}
-                alt={productInfo.name}
+                alt={productName}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -83,7 +84,7 @@ const ProductDetails = () => {
                 >
                   <img
                     src={img}
-                    alt={`${productInfo.name} ${index + 1}`}
+                    alt={`${productName} ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </button>
